@@ -11,7 +11,11 @@ public class Empleado {
         this.ID = ID;
         this.Salario = Salario;
     }
-
+/**
+ * @brief método que devuelve un nombre
+ * @param no tiene
+ * @return retorna un nombre
+ **/
     public String getNombre() {
         return this.nombre;
     }
