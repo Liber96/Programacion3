@@ -6,8 +6,8 @@ public class Empleado {
     private int ID;
     private float Salario;
 
-    public Empleado(String nombre, int ID, float Salario) {
-        this.nombre = nombre;
+    public Empleado(String nombr, int ID, float Salario) {
+        this.nombre = nombr;
         this.ID = ID;
         this.Salario = Salario;
     }
