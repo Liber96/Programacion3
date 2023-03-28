@@ -1,4 +1,4 @@
-package PreguntasDelCurso;
+package preguntasdelcurso;
 
 import java.awt.event.*;
 import javax.swing.*;
