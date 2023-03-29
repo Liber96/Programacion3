@@ -1,4 +1,4 @@
-package preguntasdelcurso;
+package POOCconceptos;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  * @version 1.0
  */
 public class AdminGUI extends JFrame implements ActionListener {
-    private PreguntasList questionList;
+    private ConceptosList listaConceptos;
     private FileHandler fileHandler;
     private int currentQuestionIndex;
 
@@ -41,11 +41,11 @@ public class AdminGUI extends JFrame implements ActionListener {
 
     /**
      * Constructor de la clase AdminGUI.
-     * @param questionList la lista de preguntas existente.
+     * @param listaConceptos la lista de preguntas existente.
      * @param fileHandler el manejador de archivos a utilizar.
      */
-    public AdminGUI(PreguntasList questionList, FileHandler fileHandler, InicioGUI parentWindow) {
-        this.questionList = questionList;
+    public AdminGUI(ConceptosList listaConceptos, FileHandler fileHandler, InicioGUI parentWindow) {
+        this.listaConceptos = listaConceptos;
         this.fileHandler = fileHandler;
         this.currentQuestionIndex = 0;
         this.parentWindow = parentWindow; // Asignar el objeto recibido al atributo parentWindow
@@ -64,7 +64,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 
 
         // Configuración de los componentes
-        idLabel = new JLabel("ID de pregunta: " + (questionList.size()+1));
+        idLabel = new JLabel("ID de pregunta: " + (listaConceptos.size()+1));
         idLabel.setBounds(20, 20, 200, 20);
         preguntaPanel.add(idLabel, BorderLayout.CENTER);
 
@@ -150,12 +150,12 @@ public class AdminGUI extends JFrame implements ActionListener {
                 String[] opciones = opcionesString.split(",");
 
                 // Crear la nueva pregunta
-                Pregunta nuevaPregunta = new Pregunta(questionList.size() + 1, pregunta, correcta, opciones);
+                Pregunta nuevaPregunta = new Pregunta(listaConceptos.size() + 1, pregunta, correcta, opciones);
 
                 // Agregar la pregunta a la lista y escribir la lista en el archivo
-                questionList.addQuestion(nuevaPregunta);
+                listaConceptos.addQuestion(nuevaPregunta);
                 try {
-                    fileHandler.writeQuestions(questionList);
+                    fileHandler.writeQuestions(listaConceptos);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(this, "Ocurrió un error al escribir en el archivo: " + ex.getMessage(),
                             "Error", JOptionPane.ERROR_MESSAGE);
@@ -167,7 +167,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 
                 // Actualizar el índice de la pregunta actual y el ID de pregunta
                 currentQuestionIndex++;
-                idLabel.setText("ID de pregunta: " + (questionList.size() + 1));
+                idLabel.setText("ID de pregunta: " + (listaConceptos.size() + 1));
 
                 // Limpiar los campos de pregunta, opciones y respuesta correcta
                 preguntaField.setText("");

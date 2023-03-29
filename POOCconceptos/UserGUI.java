@@ -1,4 +1,4 @@
-package preguntasdelcurso;
+package POOCconceptos;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,18 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @file PreguntaGUI.java
+ * @file UserGUI.java
  * @brief Clase que define la interfaz gráfica de usuario para mostrar preguntas y opciones de respuesta.
  * @date 2023-03-22
  * @version 1.0
  */
 
 /**
- * @class PreguntaGUI
+ * @class UserGUI
  * @brief Clase que define la interfaz gráfica de usuario para mostrar preguntas y opciones de respuesta.
  */
-public class PreguntaGUI extends JFrame implements ActionListener {
-    private PreguntasList questionList;
+public class UserGUI extends JFrame implements ActionListener {
+    private ConceptosList listaConceptos;
 
     private JLabel idLabel;
     private JLabel preguntaLabel;
@@ -40,11 +40,11 @@ public class PreguntaGUI extends JFrame implements ActionListener {
 
     /**
      * Constructor de la clase AdminGUI.
-     * @param questionList la lista de preguntas existente.
+     * @param listaConceptos la lista de preguntas existente.
      * @param fileHandler el manejador de archivos a utilizar.
      */
-    public PreguntaGUI(PreguntasList questionList, InicioGUI parentWindow) {
-        this.questionList = questionList;
+    public UserGUI(ConceptosList listaConceptos, InicioGUI parentWindow) {
+        this.listaConceptos = listaConceptos;
         this.parentWindow = parentWindow; // Asignar el objeto recibido al atributo parentWindow
 
 
@@ -100,8 +100,8 @@ public class PreguntaGUI extends JFrame implements ActionListener {
         add(answerPanel, BorderLayout.SOUTH);
 
         //Primer pregunta
-        idLabel.setText("ID de pregunta: " + questionList.size());
-        Pregunta currentQuestion = questionList.getRandomQuestion();
+        idLabel.setText("ID de pregunta: " + listaConceptos.size());
+        Pregunta currentQuestion = listaConceptos.getRandomQuestion();
         String correctAnswer = currentQuestion.getCorrecta();
         preguntaLabel.setText(currentQuestion.getPregunta());
         int correctButtonIndex = Randomizer.getRandomIndex(0, answerButtons.length - 1);
@@ -154,7 +154,7 @@ public class PreguntaGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == siguienteButton) {
-            Pregunta currentQuestion = questionList.getRandomQuestion();
+            Pregunta currentQuestion = listaConceptos.getRandomQuestion();
             String correctAnswer = currentQuestion.getCorrecta();
             idLabel.setText("ID de pregunta: " + currentQuestion.getIdPregunta());
             preguntaLabel.setText(currentQuestion.getPregunta());
@@ -180,9 +180,9 @@ public class PreguntaGUI extends JFrame implements ActionListener {
         } else if (e.getSource() == confirmarButton) {
             int selectedAnswer = Integer.parseInt(buttonGroup.getSelection().getActionCommand());
                 if (selectedAnswer==this.correctIndex){
-                    JOptionPane.showMessageDialog(PreguntaGUI.this, "¡Correcto!", "Resultado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(UserGUI.this, "¡Correcto!", "Resultado", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(PreguntaGUI.this, "¡Incorrecto!", "Resultado", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(UserGUI.this, "¡Incorrecto!", "Resultado", JOptionPane.ERROR_MESSAGE);
                 }
             
         } else if (e.getSource() == atrasButton) {

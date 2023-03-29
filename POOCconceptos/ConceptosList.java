@@ -1,25 +1,25 @@
-package preguntasdelcurso;
+package POOCconceptos;
 
 import java.io.Serializable;
 
 /**
- * @file PreguntasList.java
+ * @file ConceptosList.java
  * @brief Clase que representa una lista de preguntas para ser utilizada en un juego de preguntas y respuestas.
  */
 
  import java.util.ArrayList;
 
  /**
-  * @class PreguntasList
+  * @class ConceptosList
   * @brief Clase que representa una lista de preguntas para ser utilizada en un juego de preguntas y respuestas.
   */
- public class PreguntasList implements Serializable  {
+ public class ConceptosList implements Serializable  {
      private ArrayList<Pregunta> questionList; 
  
      /**
-      * @brief Constructor para la clase PreguntasList.
+      * @brief Constructor para la clase ConceptosList.
       */
-     public PreguntasList() {
+     public ConceptosList() {
          questionList = new ArrayList<>();
      }
  
@@ -75,3 +75,4 @@ import java.io.Serializable;
      }
  }
  
+

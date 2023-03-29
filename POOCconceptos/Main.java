@@ -1,6 +1,6 @@
 //comentario
 
-package preguntasdelcurso;
+package POOCconceptos;
 
 //comentario nuevo
 
@@ -8,15 +8,15 @@ import java.io.IOException;
 
 /**
  * @file Main.java
- * @brief Clase principal del programa que permite crear, modificar y eliminar preguntas.
+ * @brief Clase principal del programa que permite crear, modificar y eliminar conceptos.
  * @date 20/03/2023
  * @version 1.0
- * @author Domingo Pérez
+ * @author Marcos
  */
 
 /**
  * @class Main
- * @brief Clase principal que permite interactuar con la aplicación de preguntas.
+ * @brief Clase principal que permite interactuar con la aplicación de conceptos.
  */
 public class Main {
     
@@ -26,11 +26,11 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        // Crear instancia de FileHandler para cargar las preguntas desde preguntas.txt
-        FileHandler fileHandler = new FileHandler("PreguntasDelCurso\\preguntas.data");
+        // Crear instancia de FileHandler para cargar los conceptos desde conceptos.data
+        FileHandler fileHandler = new FileHandler("POOCconceptos\\conceptos.data");
         
-        // Crear instancia de QuestionList para manejar las preguntas en memoria
-        PreguntasList questionList = new PreguntasList();
+        // Crear instancia de conceptosList para manejar conceptos en memoria
+        ConceptosList listaconceptos = new ConceptosList();
 
          // Limpio el archivo
        /* try {
@@ -40,18 +40,14 @@ public class Main {
             e.printStackTrace();
         }*/
 
-         
         // Cargar la primera pregunta
        // String questionText1 = "1|¿Cuál es el concepto fundamental de la Programación Orientada a Objetos?|Objetos|Variables, Métodos, Clases, Interfaces|1";
       //  Pregunta question1 = Pregunta.fromString(questionText1);
-        //questionList.addQuestion(question1);
-
-
-        
-        
+        //listaconceptos.addQuestion(question1);
+  
         // Cargar las preguntas desde preguntas.txt
         try {
-            questionList = fileHandler.readQuestions();
+            listaconceptos = fileHandler.leerConceptos();
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -60,10 +56,10 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("Número de preguntas cargadas: " + questionList.size());
+        System.out.println("Número de preguntas cargadas: " + listaconceptos.size());
 
          // Inicia la ventana de inicio de la aplicación
-        InicioGUI inicioGUI = new InicioGUI(questionList, fileHandler);
+        InicioGUI inicioGUI = new InicioGUI(listaconceptos, fileHandler);
         inicioGUI.setVisible(true);
     }
 }

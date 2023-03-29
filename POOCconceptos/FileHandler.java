@@ -1,4 +1,4 @@
-package preguntasdelcurso;
+package POOCconceptos;
 
 /**
  * @file FileHandler.java
@@ -34,31 +34,31 @@ public class FileHandler {
      * @throws IOException si ocurre un error de entrada/salida.
      * @throws ClassNotFoundException si la clase de algún objeto serializado no puede ser encontrada.
      */
-    public PreguntasList readQuestions() throws IOException, ClassNotFoundException {
-        PreguntasList questionList = new PreguntasList();
+    public ConceptosList leerConceptos() throws IOException, ClassNotFoundException {
+        ConceptosList listaConceptos = new ConceptosList();
         
         FileInputStream fileInputStream = new FileInputStream(filename);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         
-        questionList = (PreguntasList) objectInputStream.readObject();
+        listaConceptos = (ConceptosList) objectInputStream.readObject();
         
         objectInputStream.close();
         fileInputStream.close();
         
-        return questionList;
+        return listaConceptos;
     }
     
     /**
      * Escribe las preguntas en el archivo.
      * 
-     * @param questionList la lista de preguntas a escribir.
+     * @param listaConceptos la lista de preguntas a escribir.
      * @throws IOException si ocurre un error de entrada/salida.
      */
-    public void writeQuestions(PreguntasList questionList) throws IOException {
+    public void escribirConceptos(ConceptosList listaConceptos) throws IOException {
         FileOutputStream fileOutputStream = new FileOutputStream(filename);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         
-        objectOutputStream.writeObject(questionList);
+        objectOutputStream.writeObject(listaConceptos);
         
         objectOutputStream.close();
         fileOutputStream.close();
